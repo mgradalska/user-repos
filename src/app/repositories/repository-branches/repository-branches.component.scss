@@ -1,0 +1,19 @@
+:host {
+  width: 100%;
+  padding: 20px 10px;
+
+  table {
+    tr:last-of-type {
+      td {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .container {
+    border: 1px solid rgba(0, 0, 0, .12);
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,26 @@
+<app-no-result
+  *ngIf="!branches.length && !loading; else list"
+  message="This repository has no branches."
+></app-no-result>
+<ng-template #list>
+  <div class="mat-elevation-z8 container">
+    <mat-spinner *ngIf="loading; else table"></mat-spinner>
+    <ng-template #table>
+      <table mat-table [dataSource]="branches">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Branch name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="commit">
+          <th mat-header-cell *matHeaderCellDef>Last commit SHA</th>
+          <td mat-cell *matCellDef="let element">{{ element.commit.sha }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="listColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: listColumns;"></tr>
+      </table>
+    </ng-template>
+  </div>
+</ng-template>
+

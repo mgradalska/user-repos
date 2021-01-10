@@ -1,0 +1,48 @@
+<app-no-result
+  *ngIf="!repositories.length; else table"
+  [message]="'User ' + username + ' has no repositories.'">
+</app-no-result>
+
+<ng-template #table>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="repositories" multiTemplateDataRows>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Repository name</th>
+        <td mat-cell *matCellDef="let repository">{{ repository.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="owner">
+        <th mat-header-cell *matHeaderCellDef>Onwer login</th>
+        <td mat-cell *matCellDef="let repository">{{ repository.owner.login }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let repository" [attr.colspan]="listColumns.length">
+          <div class="example-element-detail"
+               [@detailExpand]="repository == expandedRow ? 'expanded' : 'collapsed'">
+            <app-repository-branches
+              [expanded]="repository === expandedRow"
+              [repository]="repository">
+            </app-repository-branches>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="listColumns"></tr>
+      <tr
+        mat-row
+        class="example-element-row"
+        *matRowDef="let row; columns: listColumns;"
+        [class.example-expanded-row]="expandedRow === row"
+        (click)="expandedRow = expandedRow === row ? null : row">
+      </tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: ['expandedDetail']"
+        class="example-detail-row">
+      </tr>
+    </table>
+  </div>
+</ng-template>
+
+

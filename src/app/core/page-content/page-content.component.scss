@@ -1,0 +1,11 @@
+@import "~src/styles";
+
+:host {
+  .content {
+    margin: 5% 15%;
+
+    @include mobile {
+      margin: 5%;
+    }
+  }
+}

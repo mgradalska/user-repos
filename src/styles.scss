@@ -1,0 +1,50 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.error {
+  text-align: center;
+
+  .mat-dialog-container {
+    background: #c12808;
+    color: white;
+  }
+}
+
+.success {
+  text-align: center;
+
+  .mat-dialog-container {
+    background: #198c0e;
+    color: white;
+  }
+}
+
+mat-form-field {
+  max-width: 100%;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+
+  td.mat-cell, th.mat-header-cell {
+    padding-left: 24px;
+    word-break: break-all;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
