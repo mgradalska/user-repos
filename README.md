@@ -4,8 +4,6 @@ Application created for fetching given username repositories and branches.
 
 ## Run application
 
-Go to `user-repos` directory.
-
 ### In docker container
 
 Required tools:
